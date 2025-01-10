@@ -13,12 +13,14 @@ const actualizarContador = (): void => {
   }
 };
 
-const inputIngresarTurno = document.getElementById("ingresar-turno") as HTMLInputElement;
+const inputIngresarTurno = document.getElementById("ingresar-turno");
 const botonIngresarTurno = document.getElementById("boton-ingresar-turno");
 
 const handlerIngresarTurno = (): void => {
-  turno = parseInt(inputIngresarTurno.value);
-  inputIngresarTurno.value = '' 
+  if (inputIngresarTurno instanceof HTMLInputElement) {
+    turno = parseInt(inputIngresarTurno.value);
+    inputIngresarTurno.value = '' 
+  }
   
     actualizarContador();
 };
@@ -46,12 +48,13 @@ const handleTurnoSiguiente = (): void => {
   }
 };
 
-if (turnoAnterior !== null && turnoAnterior !== undefined) {
-  turnoAnterior.addEventListener("click", handlerTurnoAnterior);
+if (turnoAnterior instanceof HTMLButtonElement) {
+  turnoAnterior.addEventListener("click", handlerTurnoAnterior)
 }
-if (botonReset !== null && botonReset !== undefined) {
-  botonReset.addEventListener("click", reset);
-}
-if (turnoSiguiente !== null && turnoSiguiente !== undefined) {
-  turnoSiguiente.addEventListener("click", handleTurnoSiguiente);
-}
+if (botonReset instanceof HTMLButtonElement) {
+  botonReset.addEventListener("click", handlerTurnoAnterior)
+  }
+  if (turnoSiguiente instanceof HTMLButtonElement) {
+    turnoSiguiente.addEventListener("click", handleTurnoSiguiente);
+    }
+
